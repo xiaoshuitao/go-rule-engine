@@ -304,6 +304,12 @@ func formatNumber(v interface{}) float64 {
 		return float64(t)
 	case float64:
 		return t
+	case bool:
+		if t {
+		   return 1
+		} else {
+		   return 0
+		}
 	default:
 		return 0
 	}
