@@ -170,6 +170,14 @@ func (r *Rule) fit(v interface{}) bool {
 	pairStr[1], ok = r.Val.(string)
 	if !ok {
 		pairNum[1] = formatNumber(r.Val)
+		if isStr {
+			var err error
+			if pairNum[0], err = strconv.ParseFloat(pairStr[0], 64); err != nil {
+				return false
+			}
+			isNum = true
+			isObjStr = false
+		}
 		isStr = false
 		isRuleStr = false
 	} else {
